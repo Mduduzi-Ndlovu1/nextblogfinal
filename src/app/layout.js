@@ -6,8 +6,7 @@ import { ThemeProvider } from "next-themes";
 import ThemeComponent from "./components/ThemeComponent";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeModeScript } from "flowbite-react";
-
-
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,17 +20,19 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Between The Thoughts",
-  description: "Blog created to share thoughts and ideas that might not be too deep naturally",
+  description:
+    "Blog created to share thoughts and ideas that might not be too deep naturally",
 };
 
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          <ThemeModeScript/>
-          
-        </head>
+        <Head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+          <ThemeModeScript />
+        </Head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -39,7 +40,7 @@ export default function RootLayout({ children }) {
             <ThemeComponent>
               <Header />
               {children}
-              <Footer/>
+              <Footer />
             </ThemeComponent>
           </ThemeProvider>
         </body>

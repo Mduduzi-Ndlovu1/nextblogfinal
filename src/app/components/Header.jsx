@@ -62,14 +62,15 @@ export default function Header() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        
+        <Link href='/'>
           <Navbar.Link active={path === '/'}>Home</Navbar.Link>
-        
+        </Link>
+        <Link href='/about'>
           <Navbar.Link active={path === '/about'}>About</Navbar.Link>
-        
-        
+        </Link>
+        <Link href='/contact'>
           <Navbar.Link active={path === '/contact'}>Contact</Navbar.Link>
-        
+        </Link>
       </Navbar.Collapse>
 
     </Navbar>
