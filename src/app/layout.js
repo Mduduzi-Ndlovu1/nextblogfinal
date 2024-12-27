@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Between The Thoughts",
+  title: "Juniors' Thoughts",
   description:
     "Blog created to share thoughts and ideas that might not be too deep naturally",
 };
