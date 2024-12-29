@@ -13,8 +13,6 @@ export const connect = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
             dbName:'nextblogproject',
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
 
         });
         initialized = true;
