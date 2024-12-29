@@ -75,22 +75,22 @@ export async function POST(req) {
 
       if(user && eventType === 'user.created'){
         try {
-          await clerkClient.user.updateUserMetaData(id, {
+          await clerkClient.users.updateUserMetaData(id, {
             publicMetadata: {
               userMongoId: user._id,
               isAdmin: user.isAdmin,
             }
           })
         } catch (error) {
-          console.log('====================================');
+
           console.log('Error updating user metaData:', error);
-          console.log('====================================');
+
         }
       }
     } catch (error) {
-      console.log('====================================');
+
       console.log('Error updating user:', error);
-      console.log('====================================');
+
       return new Response('Error occured', {status:400})
       
     }
@@ -101,9 +101,9 @@ export async function POST(req) {
     try {
       await deleteUser(id);
     } catch (error) {
-      console.log('====================================');
+
       console.log('Error Deleting user:', error);
-      console.log('====================================');
+
       return new Response('Error occured', {status:400})
     }
   };
