@@ -18,6 +18,7 @@ import { app } from '@/app/firebase';
 
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreatePostPage() {
@@ -27,6 +28,11 @@ export default function CreatePostPage() {
     const [imageUploadProgress, setImageUploadProgress] = useState(null)
     const [imageUploadError, setImageUploadError] = useState(null)
     const [formData, setFormData] = useState({});
+    const [publishError, setPublishError] = useState(null);
+    const router = useRouter();
+
+    console.log(formData);
+    
 
     const handleUploadImage = async () => {
         try {
@@ -103,7 +109,7 @@ export default function CreatePostPage() {
                     Create a New Post
                 </h1>
 
-                <form className='flex flex-col gap-4'>
+                <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
                     <div className='flex flex-col gap-4 sm:flex-row justify-between'>
                         <TextInput
                             type='text'
@@ -111,9 +117,12 @@ export default function CreatePostPage() {
                             required
                             id='title'
                             className='flex-1'
+                            onChange={(e) => setFormData({ ...formData, title: e.target.value})}
                             />
 
-                        <Select>
+                        <Select
+                            onChange={(e) => setFormData({ ...formData, category: e.target.value})}
+                        >
                             <option value="uncategorized">Select a category</option>
                             <option value="newTech">New Technology</option>
                             <option value="opinion">A Juniors Opinion</option>
@@ -161,6 +170,9 @@ export default function CreatePostPage() {
                         placeholder='Write Something...'
                         className='h-72 mb-12'
                         required
+                        onChange={(value) => {
+                            setFormData({ ...formData, content: value});
+                        }}
                     />
                     <Button type='submit' gradientDuoTone='purpleToPink'>
                         Publish
