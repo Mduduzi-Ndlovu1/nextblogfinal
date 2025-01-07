@@ -5,7 +5,7 @@ import RecentPosts from './components/RecentPosts';
 export default async function Home() {
   let posts = null;
   try {
-    const result = await fetch('https://nextblogfinal.vercel.app'+ '/api/post/get', {
+    const result = await fetch('https://juniorsthoughts.vercel.app'+ '/api/post/get', {
       method: 'POST',
       body: JSON.stringify({ limit: 9, order: 'desc' }),
       cache: 'no-store',

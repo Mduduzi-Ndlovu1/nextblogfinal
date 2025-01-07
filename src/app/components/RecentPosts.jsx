@@ -2,7 +2,7 @@ import PostCard from './PostCard';
 export default async function RecentPosts({limit}) {
   let posts = null;
   try {
-    const result = await fetch("https://nextblogfinal.vercel.app" + '/api/post/get', {
+    const result = await fetch("https://juniorsthoughts.vercel.app" + '/api/post/get', {
       method: 'POST',
       body: JSON.stringify({ limit: limit, order: 'desc' }),
       cache: 'no-store',

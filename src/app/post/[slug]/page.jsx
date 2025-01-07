@@ -7,7 +7,7 @@ import RecentPosts from "@/app/components/RecentPosts";
 export default async function Postpage({ params }) {
     let post = null;
     try {
-        const result = await fetch('https://nextblogfinal.vercel.app' + '/api/post/get', {
+        const result = await fetch('https://juniorsthoughts.vercel.app' + '/api/post/get', {
             method: 'POST',
             body: JSON.stringify({ slug: params.slug}),
             cache: 'no-store',
